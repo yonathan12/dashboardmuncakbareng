@@ -1,16 +1,9 @@
 <?php
+require('BaseController.php');
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Admin extends CI_Controller 
+class Admin extends BaseController 
 {
-    public function __construct()
-    {
-        parent::__construct();
-        is_logged_in();
-        $this->load->model('Kode_model','kode');
-        $this->load->model('Admin_model');
-    }
-
     public function role()
     {
         $data['user'] = $this->db->get_where('d_user',['email' => $this->session->userdata('email')])->row_array();

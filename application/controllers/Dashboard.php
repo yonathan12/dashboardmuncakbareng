@@ -1,15 +1,9 @@
 <?php
+require('BaseController.php');
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller 
+class Dashboard extends BaseController 
 {
-    public function __construct()
-    {
-        parent::__construct();
-        is_logged_in();
-        $this->load->model('Dashboard_model');
-    }
-
     public function index()
     {
         $data['user'] = $this->db->get_where('d_user',['email' => $this->session->userdata('email')])->row_array();

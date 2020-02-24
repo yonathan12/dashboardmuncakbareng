@@ -10,6 +10,12 @@ class Master extends CI_Controller
         $this->load->model('Master_model');
     }
 
+    public function index(){
+        require('Gunung.php');
+        $gunung = new Gunung;
+        return $gunung->index();
+        // die(print_r($this->uri->segment(3,0),1));
+    }
     
 }
 ?>
