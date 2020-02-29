@@ -20,7 +20,7 @@
               <td><?= $m['menu']; ?></td>
               <td>
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" <?= check_access($role['Id'], $m['Id']); ?> data-role="<?= $role['Id']; ?>" data-menu="<?= $m['Id']; ?>">
+                  <input class="form-check-input" id="role" type="checkbox" <?= check_access($role['Id'], $m['Id']); ?> data-role="<?= $role['Id']; ?>" data-menu="<?= $m['Id']; ?>" onclick="return role(this)">
                 </div>
               </td>
             </tr>
@@ -30,9 +30,24 @@
       </table>
     </div>
   </div>
-
 </div>
-<!-- /.container-fluid -->
-
 </div>
-<!-- End of Main Content -->
+<script type="text/javascript">
+
+function role(e) {
+  const menuId = e.dataset.menu;
+  const roleId = e.dataset.role;
+
+  $.ajax({
+    url: "<?= base_url('admin/changeAccess'); ?>",
+    type: 'POST',
+    data: {
+      menuId: menuId,
+      roleId : roleId
+    },
+    success: function(){
+      document.location.href ="<?= base_url('admin/roleAccess/'); ?>" + roleId;
+    }
+  });
+}
+</script>

@@ -54,25 +54,6 @@
 <script src="<?= base_url();?>assets/js/alert.js"></script>
 
 <script>
-$('.form-check-input').on('click',function()
-{
-  const menuId = $(this).data('menu');
-  const roleId = $(this).data('role');
-
-  $.ajax({
-    url: "<?= base_url('admin/changeAccess'); ?>",
-    type: 'POST',
-    data: {
-      menuId: menuId,
-      roleId : roleId
-    },
-    success: function(){
-      document.location.href ="<?= base_url('admin/roleAccess/'); ?>" + roleId;
-    }
-  });
-});
-
-
 var tableCustomer;
 $(document).ready(function() { 
     table = $('#tableCustomer').DataTable({ 
