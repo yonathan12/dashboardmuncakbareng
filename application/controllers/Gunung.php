@@ -20,7 +20,7 @@ class Gunung extends BaseController
     {
         $gunung = $this->input->post('gunung');
         $url = $this->input->post('url');
-        $upload_image = uniqid().$_FILES['image']['name'];
+        $upload_image = $_FILES['image']['name']?uniqid().$_FILES['image']['name']:$_FILES['image']['name'];
         $date_created = date('Y-m-d');
         $user_id_created = $this->session->userdata('id');
         
@@ -62,7 +62,7 @@ class Gunung extends BaseController
         
         $gunung = $this->input->post('gunung');
         $url = $this->input->post('url');
-        $upload_image = uniqid().$_FILES['image']['name'];
+        $upload_image = $_FILES['image']['name']?uniqid().$_FILES['image']['name']:$_FILES['image']['name'];
         $date_update = date('Y-m-d');
         $user_id_update = $this->session->userdata('id');
 
